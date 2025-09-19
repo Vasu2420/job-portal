@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applications - Job Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .applications-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #0984e3;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        a.download-btn {
+            background: #27ae60;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        a.download-btn:hover {
+            background: #1e8449;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <h1 class="logo">Job<span>Portal</span></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/job_portal">Jobs</a></li>
+                    <li><a href="/post_job">Post Job</a></li>
+                    <li><a href="/applications" class="btn">Applications</a></li>
+                    <li><a href="/login" class="btn">Login</a></li>
+                    <li><a href="/register" class="btn">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="applications-container">
+        <h2>Job Applications</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Applicant</th>
+                    <th>Email</th>
+                    <th>Job Title</th>
+                    <th>Company</th>
+                    <th>Resume</th>
+                    <th>Applied On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr>
+                    <td>{{ app.id }}</td>
+                    <td>{{ app.name }}</td>
+                    <td>{{ app.email }}</td>
+                    <td>{{ app.job_title }}</td>
+                    <td>{{ app.company }}</td>
+                    <td>
+                        {% if app.resume %}
+                            <a href="{{ url_for('static', filename=app.resume.split('static/')[-1]) }}" target="_blank" class="download-btn">View PDF</a>
+                        {% else %}
+                            No Resume
+                        {% endif %}
+                    </td>
+                    <td>{{ app.applied_on }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

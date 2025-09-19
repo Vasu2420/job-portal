@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results - Job Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}  <!-- if you have a navbar partial, otherwise copy from index.html -->
+
+    <section class="jobs">
+        <div class="container">
+            <h2>Search Results</h2>
+
+            {% if jobs %}
+                {% for job in jobs %}
+                    <div class="job-card">
+                        <h3>{{ job.title }}</h3>
+                        <p><i class="fas fa-building"></i> {{ job.company }}</p>
+                        <p><i class="fas fa-map-marker-alt"></i> {{ job.location }}</p>
+                        <p>{{ job.description[:100] }}...</p>
+                        <a href="/apply/{{ job.id }}" class="apply-btn">View & Apply</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No jobs found for "{{ keyword }}" in "{{ location }}".</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

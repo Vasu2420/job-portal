@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eef1f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Navbar */
+header {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    padding: 18px 0;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #00cec9;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    font-weight: 500;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background-color: #00cec9;
+    color: #0f2027;
+}
+
+.nav-links .btn {
+    background-color: #00cec9;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.nav-links .btn:hover {
+    background-color: #00bfa6;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d') no-repeat center center/cover;
+    padding: 120px 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: 50px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.search-form input {
+    padding: 12px;
+    width: 250px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.search-form button {
+    background-color: #00cec9;
+    border: none;
+    padding: 12px 25px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #00bfa6;
+}
+
+/* Job Listings */
+.jobs {
+    padding: 70px 20px;
+    background-color: #f7f9fb;
+}
+
+.jobs h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.job-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-left: 6px solid #00cec9;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.job-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #0e1a35;
+}
+
+.job-card p {
+    margin-bottom: 6px;
+    font-size: 15px;
+    color: #555;
+}
+
+.apply-btn {
+    display: inline-block;
+    margin-top: 12px;
+    background-color: #0e1a35;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #1a2b4c;
+}
+
+/* About Section */
+.about {
+    padding: 70px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #0e1a35;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Contact Section */
+.contact {
+    padding: 70px 20px;
+    background-color: #f7f9fb;
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: #0e1a35;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact input,
+.contact textarea {
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.contact textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact button {
+    background-color: #00cec9;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+    background-color: #00bfa6;
+}
+
+/* Footer */
+footer {
+    background-color: #0e1a35;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+    font-size: 15px;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Free Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Your CSS file (Flask way) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container nav-container">
+            <h1 class="logo">Job<span>Portal</span></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/job_portal">Jobs</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/login" class="btn">Login</a></li>
+                    <li><a href="/register" class="btn">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Find Your Dream Job</h2>
+            <p>Search thousands of job listings from top companies</p>
+            <form class="search-form" action="/search" method="GET">
+                <input type="text" name="keyword" placeholder="Job title, skills, or company">
+                <input type="text" name="location" placeholder="City or location">
+                <button type="submit">Search Jobs</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section class="jobs" id="jobs">
+        <div class="container">
+            <h2>Latest Job Listings</h2>
+
+            {% if jobs %}
+                {% for job in jobs %}
+                    <div class="job-card">
+                        <h3>{{ job.title }}</h3>
+                        <p><i class="fas fa-building"></i> {{ job.company }}</p>
+                        <p><i class="fas fa-map-marker-alt"></i> {{ job.location }}</p>
+                        <p><i class="fas fa-clock"></i> Posted on {{ job.posted_on.strftime('%Y-%m-%d') }}</p>
+                        <a href="{{ url_for('apply', job_id=job.id) }}" class="apply-btn">View & Apply</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No jobs available right now. Please check back later!</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="about-preview">
+        <div class="container">
+            <i class="fas fa-users fa-3x"></i>
+            <h2>About JobPortal</h2>
+            <p>
+                JobPortal connects job seekers with top companies. Our mission is to help people 
+                find meaningful careers while helping employers hire the best talent.
+            </p>
+            <a href="/about" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Contact Preview Section -->
+    <section class="contact-preview">
+        <div class="container">
+            <i class="fas fa-envelope fa-3x"></i>
+            <h2>Get in Touch</h2>
+            <p>
+                Have questions? Reach out to us for support, feedback, or partnerships.
+            </p>
+            <a href="/contact" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

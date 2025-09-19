@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - Job Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .about-container {
+            max-width: 900px;
+            margin: 60px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            line-height: 1.7;
+        }
+        .about-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .about-container p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .mission-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 5px solid #00cec9;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <h1 class="logo">Job<span>Portal</span></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/job_portal">Jobs</a></li>
+                    <li><a href="/post_job">Post Job</a></li>
+                    <li><a href="/applications">Applications</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/login" class="btn">Login</a></li>
+                    <li><a href="/register" class="btn">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <div class="about-container">
+        <h2>About Job Portal</h2>
+        <p>
+            Welcome to <strong>JobPortal</strong>, your one-stop destination to connect employers with talented professionals. 
+            We make the hiring process easier by providing a seamless platform where companies can post jobs and candidates can find their dream opportunities.
+        </p>
+        <p>
+            Our platform is designed to be simple, fast, and efficient. Whether you’re an employer looking for the right talent 
+            or a job seeker aiming for your next big career move, JobPortal is here to make it happen.
+        </p>
+
+        <div class="mission-box">
+            <h3>Our Mission</h3>
+            <p>
+                To bridge the gap between employers and job seekers by providing a transparent, reliable, 
+                and user-friendly job portal that empowers people to grow their careers and businesses.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

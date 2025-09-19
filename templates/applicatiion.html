@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applications - Job Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .applications-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+        .applications-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #0984e3;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .btn-download {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-download:hover {
+            background: #1e8449;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <h1 class="logo">Job<span>Portal</span></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/job_portal">Jobs</a></li>
+                    <li><a href="/post_job">Post Job</a></li>
+                    <li><a href="/applications" class="btn">Applications</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Applications Table -->
+    <div class="applications-container">
+        <h2>Submitted Applications</h2>
+
+        {% if applications %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Applicant</th>
+                        <th>Email</th>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Applied On</th>
+                        <th>Resume</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for app in applications %}
+                        <tr>
+                            <td>{{ app.name }}</td>
+                            <td>{{ app.email }}</td>
+                            <td>{{ app.job_title }}</td>
+                            <td>{{ app.company }}</td>
+                            <td>{{ app.applied_on.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td>
+                                {% if app.resume %}
+                                    <a href="{{ url_for('uploaded_file', filename=app.resume) }}" class="btn-download" target="_blank">Download</a>
+                                {% else %}
+                                    No Resume
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No applications submitted yet.</p>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply for Job - Job Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .apply-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+        .apply-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .apply-container p {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        .apply-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+        }
+        .apply-container button {
+            width: 100%;
+            background: #0984e3;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .apply-container button:hover {
+            background: #0769b1;
+        }
+        .note {
+            font-size: 14px;
+            color: #666;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <h1 class="logo">Job<span>Portal</span></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/job_portal">Jobs</a></li>
+                    <li><a href="/post_job">Post Job</a></li>
+                    <li><a href="/applications">Applications</a></li>
+                    <li><a href="/login" class="btn">Login</a></li>
+                    <li><a href="/register" class="btn">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Apply Job Form -->
+    <div class="apply-container">
+        <h2>Apply for {{ job.title }}</h2>
+        <p>at <strong>{{ job.company }}</strong> ({{ job.location }})</p>
+
+        <!-- enctype is required for file upload -->
+        <form action="/apply/{{ job.id }}" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Your Full Name" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
+            <label class="note">Upload Resume (PDF only, max 5MB)</label>
+            <input type="file" name="resume" accept=".pdf" required>
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 JobPortal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
